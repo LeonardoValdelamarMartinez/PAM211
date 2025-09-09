@@ -26,10 +26,8 @@ public class Actividad2
 {
     public static void main(String[] args) throws Exception 
     {   List<InicioPAM> catalogo = new ArrayList<>();
-
+        
         catalogo.add( new InicioPAM("\n 1. Respeto \n 2. Importante participación activa en orden \n 3. No entregar trabajos incompletos, \n 4. No se aplican examen fuera de tiempo \n 5. Plagio de trabajos = 0 para todos \n 6. 3 faltas = Final del parcial \n 7. Calificación máxima en final 8", "\n ENTREGAR los trabajos para su revisión \n Entregas en PDF \n Avisos de clase \n Entregas autorizadas con retraso, 5 Calif Max", "\n 1er Parcial 29-09-25 \n 2do Parcial 03-11-25 \n 3er Parcial 01-12-25 \n Final 08-12-25", "1er Parcial: Conocimiento: 40%, Desempeño: 20%, Producto: 30%, Integrador: 10% \n 2do Parcial: 40%, Desempeño: 20%, Producto: 20%, Integrador: 20%  \n 3er Parcial: 20%, Desempeño: 20%, Producto: 40%, Integrador: 30% "));
-        
-        
         String respuesta;
         Scanner scanner;
         do 
