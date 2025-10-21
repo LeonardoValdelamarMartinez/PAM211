@@ -23,7 +23,7 @@ export default function MenuScreen() {
     case 'Text Input':
       return <TextInput/>;
 
-    case 'ImageBackground & Splash Screen':
+    case 'ImageBackground':
       return <ImageBackground/>;
 
     case 'ScrollView':
