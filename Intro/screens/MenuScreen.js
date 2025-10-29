@@ -3,11 +3,12 @@ import { Text, StyleSheet, View, Button } from 'react-native';
 import BotonesScreen from './BotonesScreen';
 import ContadorScreen from './ContadorScreen';
 import Modal from './Modal';
-import FlatList from './FlatList';
 import Activity from './Activity';
-import ScrollView from './ScrollView';
 import ImageBackground from './ImageBackground';
 import TextInput from './TextInput';
+import Practica11 from './Practica11';
+import ScrollScreen from './ScrollView';
+import ListScreen from './ListScreen';
 
 export default function MenuScreen() {
   const [screen, setScreen] = useState('menu');
@@ -27,16 +28,19 @@ export default function MenuScreen() {
       return <ImageBackground/>;
 
     case 'ScrollView':
-      return <ScrollView/>;
+      return <ScrollScreen/>;
 
     case 'Activity Indicator':
       return <Activity/>;
 
-    case 'FlatList & SectionList':
-      return <FlatList/>;
+    case 'ListScreen':
+      return <ListScreen/>;
 
     case 'Modal':
       return <Modal/>;
+
+      case 'Practica 11':
+      return <Practica11/>;
     case 'menu':
     default:
       return (
@@ -48,9 +52,9 @@ export default function MenuScreen() {
           <Button color = 'grey' onPress={()=>setScreen('ImageBackground')} title='Practica ImageBackground'></Button>
           <Button color = 'grey' onPress={()=>setScreen('ScrollView')} title='Practica Scrollview'></Button>
           <Button color = 'grey' onPress={()=>setScreen('Activity Indicator')} title='Practica Activity Indicator'></Button>
-          <Button color = 'grey' onPress={()=>setScreen('Flatlist & SectionList')} title='Practica Flatlist'></Button>
+          <Button color = 'grey' onPress={()=>setScreen('ListScreen')} title='Practica ListScreen'></Button>
           <Button color = 'grey' onPress={()=>setScreen('Modal')} title='Practica Modal'></Button>
-
+          <Button color = 'grey' onPress={()=>setScreen('Practica 11')} title='Practica 11'></Button>
         
           </View>
       );
