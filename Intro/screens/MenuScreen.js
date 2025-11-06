@@ -41,7 +41,8 @@ export default function MenuScreen() {
 
       case 'Practica 11':
       return <Practica11/>;
-    case 'menu':
+
+
     default:
       return (
         <View style = {styles.container}>
@@ -55,7 +56,7 @@ export default function MenuScreen() {
           <Button color = 'grey' onPress={()=>setScreen('ListScreen')} title='Practica ListScreen'></Button>
           <Button color = 'grey' onPress={()=>setScreen('Modal')} title='Practica Modal'></Button>
           <Button color = 'grey' onPress={()=>setScreen('Practica 11')} title='Practica 11'></Button>
-        
+          <Button color = 'grey' onPress={()=>setScreen('InicioSesion')} title='Practica Inicio Sesion'></Button>
           </View>
       );
     }
