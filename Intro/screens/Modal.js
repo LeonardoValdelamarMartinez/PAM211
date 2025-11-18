@@ -14,6 +14,7 @@ const [modalVisible, setModalVisible] = useState(false);
         transparent = {true}
         visible = {modalVisible}
         onRquestClose = {() => setModalVisible(!modalVisible)}>
+          
           <View style = {styles.modalContainer}>
           <View style = {styles.modalContent}>
             <Text style = {styles.textoModal}>

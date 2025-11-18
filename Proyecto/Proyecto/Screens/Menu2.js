@@ -8,7 +8,7 @@ import HomeScreen from './HomeScreen';
 import NotifiScreen from './NotiScreen';
 import TransaccionesScreen from './Transacciones';
 import PresupuestoScreen from './PresupuestoScreen';
-
+import RecuperarContraseña from './RecuperarContraseña';
 
 export default function MenuScreen() {
   const [screen, setScreen] = useState('menu');
@@ -37,10 +37,12 @@ export default function MenuScreen() {
       case 'Presupuesto':
       return <PresupuestoScreen/>;
 
+      case 'RecuperarContraseña':
+      return <RecuperarContraseña/>;
     default:
       return (
         <View style = {styles.container}>
-          <Text style ={styles.texto} >Menu</ Text>
+          <Text style ={styles.texto} >Menu</Text>
           <Button color = 'grey' onPress={()=>setScreen('InicioSesion')} title='Practica Inicio Sesion'></Button>
           <Button color = 'grey' onPress={()=>setScreen('Registro')} title='Practica Registro'></Button>
             <Button color = 'grey' onPress={()=>setScreen('Actividad')} title='Practica Actividad'></Button>
@@ -48,6 +50,7 @@ export default function MenuScreen() {
             <Button color = 'grey' onPress={()=>setScreen('NotifiScreen')} title='Practica Notificaciones'></Button>
             <Button color = 'grey' onPress={()=>setScreen('Transacciones')} title='Practica Transacciones'></Button>
             <Button color = 'grey' onPress={()=>setScreen('Presupuesto')} title='Practica Presupuesto'></Button>
+            <Button color = 'grey' onPress={()=>setScreen('RecuperarContraseña')} title='Practica Recuperar Contraseña'></Button>
           </View>
       );
     }
