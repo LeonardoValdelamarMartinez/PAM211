@@ -1,16 +1,20 @@
 import { Usuario } from '../models/Usuario';
 import DatabaseService from '../database/databaseService';
 
-export class UsuarioController {
-  constructor() {
+export class UsuarioController 
+{
+  constructor() 
+  {
     this.listeners = [];
   }
 
   // Inicializar el controlador con el Service
-  async initialize() {
+  async initialize() 
+  {
     await DatabaseService.initialize();
   }
-  async obtenerUsuarios() {
+  async obtenerUsuarios() 
+  {
   try {
     const data = await DatabaseService.getAll();
     return data.map(u => new Usuario(u.id, u.nombre, u.fecha_creacion));
@@ -19,7 +23,8 @@ export class UsuarioController {
     throw new Error('No se pudieron cargar los usuarios');
   }
 }
-async crearUsuario(nombre) {
+async crearUsuario(nombre) 
+{
   try {
     // 1. Validar datos
     Usuario.validar(nombre);
@@ -36,21 +41,25 @@ async crearUsuario(nombre) {
       nuevoUsuario.nombre,
       nuevoUsuario.fecha_creacion
     );
-  } catch (error) {
+  } catch (error) 
+  {
     console.error('Error al crear usuario:', error);
     throw error;
   }
 }
 // Sistema de observadores para actualizar la vista automáticamente
-addListener(callback) {
+addListener(callback) 
+{
   this.listeners.push(callback);
 }
 
-removeListener(callback) {
+removeListener(callback) 
+{
   this.listeners = this.listeners.filter(l => l !== callback);
 }
 
-notifyListeners() {
+notifyListeners() 
+{
   this.listeners.forEach(callback => callback());
 }
 

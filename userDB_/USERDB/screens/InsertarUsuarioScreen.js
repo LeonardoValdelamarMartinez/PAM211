@@ -145,9 +145,7 @@ export default function UsuarioView() {
             contentContainerStyle={usuarios.length === 0 && styles.emptyList}
           />
         )}
-
       </View>
-
     </View>
   );
 }
