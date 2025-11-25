@@ -32,14 +32,12 @@ class DatabaseService {
     }
   }
 
-  // 🔥 FALTABA ESTE MÉTODO
-  async add(nombre) {
-    if (Platform.OS === 'web') {
-      const usuarios = await this.getAll();
-
-      const nuevoUsuario = {
-        id: Date.now(),
-        nombre,
+  async add(nombre) 
+  {
+    if (Platform.OS === 'web') 
+      {
+        const usuarios = await this.getAll();
+        const nuevoUsuario = { id: Date.now(), nombre,
         fecha_creacion: new Date().toISOString()
       };
 
