@@ -7,10 +7,13 @@ class DatabaseService {
     this.storageKey = 'usuarios';
   }
 
-  async initialize() {
-    if (Platform.OS === 'web') {
+  async initialize() 
+  {
+    if (Platform.OS === 'web') 
+      {
       console.log('Usando LocalStorage para web');
-    } else {
+    } else 
+      {
       console.log('Usando SQLite para móvil');
       this.db = await SQLite.openDatabaseAsync('miapp.db');
       await this.db.execAsync(`
@@ -23,11 +26,14 @@ class DatabaseService {
     }
   }
 
-  async getAll() {
-    if (Platform.OS === 'web') {
+  async getAll() 
+  {
+    if (Platform.OS === 'web') 
+      {
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
-    } else {
+    } else 
+      {
       return await this.db.getAllAsync('SELECT * FROM usuarios ORDER BY id DESC');
     }
   }
@@ -40,13 +46,13 @@ class DatabaseService {
         const nuevoUsuario = { id: Date.now(), nombre,
         fecha_creacion: new Date().toISOString()
       };
-
       usuarios.unshift(nuevoUsuario);
       localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
 
       return nuevoUsuario;
 
-    } else {  
+    } else 
+      {  
       const result = await this.db.runAsync(
         'INSERT INTO usuarios(nombre) VALUES(?)',
         nombre

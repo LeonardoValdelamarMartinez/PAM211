@@ -91,7 +91,6 @@ export default function UsuarioView() {
       {/* Zona del INSERT */}
       <View style={styles.insertSection}>
         <Text style={styles.sectionTitle}> Insertar Usuario</Text>
-
         <TextInput
           style={styles.input}
           placeholder="Escribe el nombre del usuario"
@@ -99,7 +98,6 @@ export default function UsuarioView() {
           onChangeText={setNombre}
           editable={!guardando}
         />
-
         <TouchableOpacity
           style={[styles.button, guardando && styles.buttonDisabled]}
           onPress={handleAgregar}
@@ -109,7 +107,6 @@ export default function UsuarioView() {
             {guardando ? ' Guardando...' : 'Agregar Usuario'}
           </Text>
         </TouchableOpacity>
-
       </View>
 
       {/* Zona del SELECT */}
@@ -117,7 +114,6 @@ export default function UsuarioView() {
 
         <View style={styles.selectHeader}>
           <Text style={styles.sectionTitle}>Lista de Usuarios</Text>
-
           <TouchableOpacity
             style={styles.refreshButton}
             onPress={cargarUsuarios}
@@ -125,7 +121,6 @@ export default function UsuarioView() {
             <Text style={styles.refreshText}>Recargar</Text>
           </TouchableOpacity>
         </View>
-
         {loading ? (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="#007AFF" />

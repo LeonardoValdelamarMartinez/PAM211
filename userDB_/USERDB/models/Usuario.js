@@ -4,8 +4,6 @@ export class Usuario {
     this.nombre = nombre;
     this.fechaCreacion = fechaCreacion || new Date().toISOString();
   }
-
-
 // Validaciones del modelo
  static validar(nombre) 
  {

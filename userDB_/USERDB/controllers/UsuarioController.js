@@ -9,6 +9,7 @@ export class UsuarioController
   }
 
   // Inicializar el controlador con el Service
+  
   async initialize() 
   {
     await DatabaseService.initialize();
@@ -18,14 +19,17 @@ export class UsuarioController
   try {
     const data = await DatabaseService.getAll();
     return data.map(u => new Usuario(u.id, u.nombre, u.fecha_creacion));
-  } catch (error) {
+  } catch (error) 
+  {
     console.error(' Error al obtener usuarios:', error);
     throw new Error('No se pudieron cargar los usuarios');
   }
 }
+
 async crearUsuario(nombre) 
 {
-  try {
+  try 
+  {
     // 1. Validar datos
     Usuario.validar(nombre);
 
@@ -52,12 +56,10 @@ addListener(callback)
 {
   this.listeners.push(callback);
 }
-
 removeListener(callback) 
 {
   this.listeners = this.listeners.filter(l => l !== callback);
 }
-
 notifyListeners() 
 {
   this.listeners.forEach(callback => callback());
