@@ -7,13 +7,10 @@ class DatabaseService {
     this.storageKey = 'usuarios';
   }
 
-  async initialize() 
-  {
-    if (Platform.OS === 'web') 
-      {
+  async initialize() {
+    if (Platform.OS === 'web') {
       console.log('Usando LocalStorage para web');
-    } else 
-      {
+    } else {
       console.log('Usando SQLite para móvil');
       this.db = await SQLite.openDatabaseAsync('miapp.db');
       await this.db.execAsync(`
@@ -26,33 +23,30 @@ class DatabaseService {
     }
   }
 
-  async getAll() 
-  {
-    if (Platform.OS === 'web') 
-      {
+  async getAll() {
+    if (Platform.OS === 'web') {
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
-    } else 
-      {
-      return await this.db.getAllAsync('SELECT * FROM usuarios ORDER BY id DESC');
+    } else {
+      return await this.db.getAllAsync(
+        'SELECT * FROM usuarios ORDER BY id DESC'
+      );
     }
   }
 
-  async add(nombre) 
-  {
-    if (Platform.OS === 'web') 
-      {
-        const usuarios = await this.getAll();
-        const nuevoUsuario = { id: Date.now(), nombre,
-        fecha_creacion: new Date().toISOString()
+  async add(nombre) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const nuevoUsuario = {
+        id: Date.now(),
+        nombre,
+        fecha_creacion: new Date().toISOString(),
       };
       usuarios.unshift(nuevoUsuario);
       localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
 
       return nuevoUsuario;
-
-    } else 
-      {  
+    } else {
       const result = await this.db.runAsync(
         'INSERT INTO usuarios(nombre) VALUES(?)',
         nombre
@@ -61,10 +55,66 @@ class DatabaseService {
       return {
         id: result.lastInsertRowId,
         nombre,
-        fecha_creacion: new Date().toISOString()
+        fecha_creacion: new Date().toISOString(),
       };
     }
   }
+
+  async update(id, nuevoNombre) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const index = usuarios.findIndex(u => u.id === id);
+
+      if (index === -1) {
+        throw new Error('Usuario no encontrado');
+      }
+
+      usuarios[index].nombre = nuevoNombre;
+      localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+
+      return usuarios[index];
+    } else {
+      await this.db.runAsync(
+        'UPDATE usuarios SET nombre = ? WHERE id = ?',
+        nuevoNombre,
+        id
+      );
+
+      return { id, nombre: nuevoNombre };
+    }
+  }
+
+async delete(id) 
+{
+  if (Platform.OS === 'web') 
+  {
+    const idStr = String(id);
+
+    const usuarios = await this.getAll();
+
+    console.log('Eliminar (web) → id:', id, ' - typeof:', typeof id);
+    console.log('Usuarios antes de eliminar:', usuarios);
+
+    const filtrados = usuarios.filter(u => String(u.id) !== idStr);
+
+    console.log('Usuarios después de eliminar:', filtrados);
+
+    localStorage.setItem(this.storageKey, JSON.stringify(filtrados));
+    return true;
+  } 
+  else 
+  {
+    
+    await this.db.runAsync(
+      'DELETE FROM usuarios WHERE id = ?',
+      id
+    
+    );
+    return true;
+  }
+}
+
+
 }
 
 export default new DatabaseService();
