@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useCallback } from 'react';
 import {View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Alert, ActivityIndicator, Platform } from 'react-native';
 import { UsuarioController } from '../controllers/UsuarioController';

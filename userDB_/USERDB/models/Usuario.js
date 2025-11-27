@@ -1,3 +1,4 @@
+
 export class Usuario {
   constructor(id, nombre, fechaCreacion) {
     this.id = id;

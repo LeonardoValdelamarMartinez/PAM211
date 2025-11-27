@@ -1,3 +1,4 @@
+
 import { Usuario } from '../models/Usuario';
 import DatabaseService from '../database/databaseService';
 
