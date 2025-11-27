@@ -1,4 +1,3 @@
-// Registro.jsx
 import React, { useState } from "react";
 import {
   Alert,
@@ -10,12 +9,27 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
+import InicioSesion from "./InicioSesion";
+  
 export default function Registro({ goLogin }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [mostrarInicioSesion, setMostrarInicio] = useState(false);
+
+  const goInicioSesion = () => {
+         Alert.alert( "Inicio Sesion", "Navegando al inicio de sesion.", [
+          {
+            text: "OK",
+            onPress: () => setMostrarInicio(true),
+          },
+        ]);
+      };
+      if (mostrarInicioSesion) {
+        return <InicioSesion />;
+      }
+
 
   const onRegister = () => {
     if (!fullName || !email || !username || !password) {
@@ -27,6 +41,9 @@ export default function Registro({ goLogin }) {
 
   return (
     <SafeAreaView style={styles.root}>
+      <TouchableOpacity style={styles.InicioBtn} onPress={goInicioSesion}>
+                <Text style={styles.ReturnBtnText}> Regresar</Text>
+      </TouchableOpacity>
       <Text style={styles.headerTitle}>Ahorra+ App</Text>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         

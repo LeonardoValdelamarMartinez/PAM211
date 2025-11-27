@@ -1,73 +1,33 @@
-import React, { useState } from 'react';
+
 import { Text, StyleSheet, View, Button } from 'react-native';
 
-import InicioSesion from './InicioSesion';
-import Registro from './Registro';
-import Actividad from './Actividad';
-import HomeScreen from './HomeScreen';
-import NotifiScreen from './NotiScreen';
-import TransaccionesScreen from './Transacciones';
-import PresupuestoScreen from './PresupuestoScreen';
-import RecuperarContraseña from './RecuperarContraseña';
+export default function Menu({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Menú principal</Text>
 
-export default function MenuScreen() {
-  const [screen, setScreen] = useState('menu');
-
-  switch (screen) 
-  {
-
-    case 'InicioSesion':
-      return <InicioSesion/>;
-    
-    case 'Registro':
-      return <Registro/>;
-
-    case 'Actividad':
-      return <Actividad/>;
-    
-      case 'HomeScreen':
-      return <HomeScreen/>;
-    
-      case 'NotifiScreen':
-      return <NotifiScreen/>;
-    
-      case 'Transacciones':
-      return <TransaccionesScreen/>;
-    
-      case 'Presupuesto':
-      return <PresupuestoScreen/>;
-
-      case 'RecuperarContraseña':
-      return <RecuperarContraseña/>;
-    default:
-      return (
-        <View style = {styles.container}>
-          <Text style ={styles.texto} >Menu</Text>
-          <Button color = 'grey' onPress={()=>setScreen('InicioSesion')} title='Practica Inicio Sesion'></Button>
-          <Button color = 'grey' onPress={()=>setScreen('Registro')} title='Practica Registro'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('Actividad')} title='Practica Actividad'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('HomeScreen')} title='Practica HomeScreen'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('NotifiScreen')} title='Practica Notificaciones'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('Transacciones')} title='Practica Transacciones'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('Presupuesto')} title='Practica Presupuesto'></Button>
-            <Button color = 'grey' onPress={()=>setScreen('RecuperarContraseña')} title='Practica Recuperar Contraseña'></Button>
-          </View>
-      );
-    }
+      <Button title="Inicio de Sesión" onPress={() => navigation.navigate('InicioSesion')} />
+      <Button title="Registro" onPress={() => navigation.navigate('Registro')} />
+      <Button title="Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="Transacciones" onPress={() => navigation.navigate('Transacciones')} />
+      <Button title="Presupuesto" onPress={() => navigation.navigate('Presupuesto')} />
+      <Button title="Notificaciones" onPress={() => navigation.navigate('Notificaciones')} />
+      <Button title="Gráficas" onPress={() => navigation.navigate('Graficas')} />
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#aeaaaaff',
-    alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 16,
-},
- texto: {
-    color: 'black',
-    fontSize: 60,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    gap: 10,
+  },
+  title: {
+    fontSize: 20,
     fontWeight: 'bold',
-    fontStyle: 'italic',
-  }
-}
-);
+    marginBottom: 20,
+  },
+});

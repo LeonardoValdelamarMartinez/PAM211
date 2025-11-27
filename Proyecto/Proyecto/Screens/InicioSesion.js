@@ -47,6 +47,8 @@ export default function InicioSesion() {
       },
     ]);
   };
+
+  
   if (mostrarRegistro) {
     return <Registro />;
   }

@@ -1,25 +1,24 @@
+
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
+import GraficasScreen from "./Graficas"; 
+
 export default function HomeScreen({ navigation }) {
   return (
-    
     <View style={styles.container}>
-      
       <Text style={styles.title}>Bienvenido</Text>
-
       <View style={styles.container2} >
-      <Button color = 'black' title="Ingresos" onPress={() => navigation.navigate('Ingresos')} />
-      <Button color = 'grey' title="Gastos" onPress={() => navigation.navigate('Gastos')} />
+        <Button color = 'black' title="Ingresos" onPress={() => navigation.navigate('Ingresos')} />
+        <Button color = 'grey' title="Gastos" onPress={() => navigation.navigate('Gastos')} />
       </View>
       <Text style={styles.subtitulo}>Sus finanzas son:</Text>
-
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Saldo actual:</Text>
         <Text style={styles.balance}>$0.00</Text>
       </View>
       <Button color = 'grey' title="Ver transacciones" onPress={() => navigation.navigate('Transacciones')} />
       <Button color = 'grey' title="Presupuesto" onPress={() => navigation.navigate('Presupuestos')} />
-      <Button color = 'grey' title="Ver gráficas" onPress={() => navigation.navigate('Graficas')} />
+      <Button color='grey' title="Ver gráficas" onPress={() => navigation.navigate('Graficas')} />
       <Button color = 'grey' title="Ver perfil" onPress={() => navigation.navigate('Perfil')} />
     </View>
   );
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffffff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     shadowColor: '#000',
     shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0,height: 2 },
     shadowRadius: 5,
     elevation: 4,
   },
