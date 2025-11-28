@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, Platform, Alert, Button, TextInput, ActivityIndicator } from 'react-native'
 import React, {useState} from 'react'
 
-export default function TransaccionesScreen() {
+export default function TransaccionesScreen({ navigation }) {
 
 
   const [nombreApartado, setNombreApartado] = useState('');
